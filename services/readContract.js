@@ -13,7 +13,7 @@ const ERC20_ABI = [
 ];
 
 const contract = new ethers.Contract(
-  process.env.CONTRACT_ADDRESS,
+  process.env.TOKEN_ADDRESS,
   ERC20_ABI,
   provider
 );
