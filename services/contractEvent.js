@@ -4,7 +4,6 @@ require('dotenv').config({ path: '../.env' });
 const provider = new ethers.providers.JsonRpcProvider(
   `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`
 );
-
 const ERC20_ABI = [
   'function name() view returns (string)',
   'function symbol() view returns (string)',
@@ -23,6 +22,11 @@ const contract = new ethers.Contract(
 (async () => {
   const block = await provider.getBlockNumber();
 
-  const transferEvents = await contract.queryFilter('Transfer', block - 10, block);
-  console.log({ transferEvents });
+  const transferEvents = await contract.queryFilter(
+    'Transfer',
+    block - 10,
+    block
+  );
+  
+  console.log(transferEvents);
 })();
